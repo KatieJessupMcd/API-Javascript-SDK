@@ -69,7 +69,7 @@ Create record
   });
 ```
 
-Upload a file to view 8, record 3, field name "Picture"
+Upload a file to view id 8, record id 3, field name "Picture"
 ```html
     <form>
         <input type="file" id="Picture" name="Picture" size="30">
