@@ -1,5 +1,5 @@
-var TrackVia = function(apiKey, user, pass, clientId) {
-    this.init(apiKey, user, pass, clientId);
+var TrackVia = function(apiKey, user, pass, clientId, refreshToken) {
+    this.init(apiKey, user, pass, clientId, refreshToken);
 };
 
 $.extend(TrackVia.prototype, {
@@ -11,33 +11,52 @@ $.extend(TrackVia.prototype, {
     refreshToken : null,
     baseUrl : "https://go.trackvia.com",
 
-    init: function(apiKey, user, pass, clientId) {
+    init: function(apiKey, user, pass, clientId, refreshToken) {
         this.apiKey = apiKey;
         this.user = user;
         this.pass = pass;
         this.clientId = clientId;
+	this.refreshToken = refreshToken || null;
     },
     
     login: function() {
-        var data =  {
-            'grant_type': 'password',
-            'client_id': this.clientId,
-            'username': this.user,
-            'password': this.pass
-         };
+	if ( this.refreshToken != null ){
+		var params = {
+			'grant_type' : 'refresh_token',
+		    	'client_id': this.clientId,
+			'refresh_token' : this.refreshToken,
+		};
 
-        var scope = this;
+		var scope = this;
 
-        // Do the Auth request
-        return $.post( this.baseUrl + "/oauth/token",
-                data, 
-                function(response) {
-                    scope.accessToken = response.accessToken;
-                    scope.refreshToken = response.refreshToken.value;
-                },
-                'json'
-        );
+		return $.get ( this.baseUrl + "/oauth/token",
+			params,
+			function(response){
+				scope.accessToken = response.accessToken;
+			},
+			'json'
+		);
 
+	} else{
+		var data =  {
+		    'grant_type': 'password',
+		    'client_id': this.clientId,
+		    'username': this.user,
+		    'password': this.pass
+		 };
+
+		var scope = this;
+
+		// Do the Auth request
+		return $.post( this.baseUrl + "/oauth/token",
+			data, 
+			function(response) {
+			    scope.accessToken = response.accessToken;
+			    scope.refreshToken = response.refreshToken.value;
+			},
+			'json'
+		);
+	}
     },
 
     getAccessToken: function() {
