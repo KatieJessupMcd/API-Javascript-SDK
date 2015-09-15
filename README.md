@@ -91,7 +91,7 @@ Upload a file to view 8, record 3, field name "Picture"
 
 *Deferred Objects*
 
-All of the SDK functions return a jquery (Deferred Object)[http://api.jquery.com/category/deferred-object/]
+All of the SDK functions return a jquery [Deferred Object](http://api.jquery.com/category/deferred-object/)
 
 For example, to handle a potential error you can use `deferred.fail()`
 
