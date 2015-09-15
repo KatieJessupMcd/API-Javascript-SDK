@@ -97,9 +97,9 @@ For example, to handle a potential error you can use `deferred.fail()`
 
 ```javascript
     tv.login().done(function() {
-	// Do Stuff
+        // Do Stuff
     })
     .fail(function(error) {
-	alert('Failed to login', error);
+        alert('Failed to login', error);
     });
 ```
