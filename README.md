@@ -81,14 +81,9 @@ Upload a file to view 8, record 3, field name "Picture"
     tv.login().done(function() {
         //create a form data object
         var data = new FormData();
-        
-        //put all the files into the form data object
-        //Note: TrackVia only supports one file at a time
-        jQuery.each($("#Picture")[0].files, function(i, file) {
-            //The name must be "file"
-            data.append('file', file);
-        });
-
+        //The key must be "file" and TrackVia only supports one
+        //file upload at a time
+        data.append('file', $("#Picture")[0].files[0]);
         //Use the SDK to upload the file
         tv.uploadFile( 8, 3, "Picture", data );
     });
