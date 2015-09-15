@@ -88,3 +88,18 @@ Upload a file to view 8, record 3, field name "Picture"
         tv.uploadFile( 8, 3, "Picture", data );
     });
 ```
+
+*Deferred Objects*
+
+All of the SDK functions return a jquery (Deferred Object)[http://api.jquery.com/category/deferred-object/]
+
+For example, to handle a potential error you can use `deferred.fail()`
+
+```javascript
+    tv.login().done(function() {
+	// Do Stuff
+    })
+    .fail(function(error) {
+	alert('Failed to login', error);
+    });
+```
