@@ -81,8 +81,16 @@ $.extend(TrackVia.prototype, {
         return $.get(apiUrl);
     },
 
-    getViews: function() {
-        var apiUrl =  this.baseUrl + '/openapi/views' + this.getQueryParams();
+    getViews: function(start, max) {
+        params = {}
+        if(start != null){
+            params.start = start;
+        }
+        if(max != null){
+            params.max = max;
+        }
+
+        var apiUrl =  this.baseUrl + '/openapi/views' + this.getQueryParams(params);
 
         return $.get(apiUrl);
     },
