@@ -81,7 +81,13 @@ $.extend(TrackVia.prototype, {
         return $.get(apiUrl);
     },
 
-    getViews: function(start, max) {
+    getViews: function() {
+        var apiUrl =  this.baseUrl + '/openapi/views' + this.getQueryParams();
+
+        return $.get(apiUrl);
+    },
+
+    getView: function(viewId, start, max) {
         params = {}
         if(start != null){
             params.start = start;
@@ -89,14 +95,8 @@ $.extend(TrackVia.prototype, {
         if(max != null){
             params.max = max;
         }
-
-        var apiUrl =  this.baseUrl + '/openapi/views' + this.getQueryParams(params);
-
-        return $.get(apiUrl);
-    },
-
-    getView: function(viewId) {
-        var apiUrl =  this.baseUrl + '/openapi/views/' + viewId + this.getQueryParams();
+        
+        var apiUrl =  this.baseUrl + '/openapi/views/' + viewId + this.getQueryParams(params);
 
         return $.get(apiUrl);
     },
