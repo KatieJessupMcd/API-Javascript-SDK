@@ -1,0 +1,32 @@
+{
+  "name": "Public-API-Web-SDK",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo Please open ./test/trackvia-api_test.js to run tests in the browser.",
+    "dev": "webpack --watch",
+    "build": "webpack"
+  },
+  "keywords": [
+    "trackvia"
+  ],
+  "author": "Trackvia",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "json-loader": "^0.5.4",
+    "mocha": "^5.0.4",
+    "nyc": "^11.6.0",
+    "webpack": "^3.10"
+  },
+  "dependencies": {
+    "request": "^2.65.0",
+    "request-debug": "^0.2.0"
+  }
+}

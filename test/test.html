@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.0.4/mocha.min.css">
+        <link rel="stylesheet" media="all" href="./styles.css">
+        <title>Testing the Open Web API</title>
+    </head>
+    <body>
+        <section id="control-section">
+            <h1>Testing the Open Web API</h1>
+            <label id="file-input-label" for="file-input">Choose an image to test the attachFile method:
+                <input id="file-input" type="file">
+            </label>
+            <button id="run-btn">RUN TESTS</button>
+        </section>
+
+        <section id="mocha-section">
+            <div id="mocha"></div>
+            <div id="messages"></div>
+            <div id="fixtures"></div>
+        </section>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.1.2/chai.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.0.4/mocha.min.js"></script>
+        <script>
+            mocha.setup({
+                ui: 'bdd',
+            });
+        </script>
+        <script src="../build/trackvia-api.js"></script>
+        <script src="trackvia-api_test.js" ></script>
+        <script>
+            document.getElementById('run-btn').addEventListener('click', () => {
+                document.getElementById('run-btn').disabled = true;
+                mocha.run()
+            });
+        </script>
+    </body>
+</html>
