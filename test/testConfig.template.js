@@ -39,7 +39,11 @@ const config = {
     // Go to the default view of your test table and enter the ID and name (case sensitive) of that view here
     // The name of the default view is 'Default {table name} View' (even though it looks different in TrackVia)
     VIEW_ID: 0,
-    VIEW_NAME: 'Default TEST TABLE View'
+    VIEW_NAME: 'Default TEST TABLE View',
+    
+    // Email address that will be added as a new user
+    EMAIL_BEFORE_AT: '', // john.smith
+    EMAIL_AFTER_AT: '' // gmail.com
 };
 
 /**

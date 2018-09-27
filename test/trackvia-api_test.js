@@ -14,6 +14,8 @@ const {
     DOCUMENT_FIELD_NAME,
     VIEW_ID,
     VIEW_NAME,
+    EMAIL_BEFORE_AT,
+    EMAIL_AFTER_AT
 } = config;
 
 console.log('testing');
@@ -161,22 +163,23 @@ describe('USERS', () => {
         })
     });
     describe('POST /openapi/users in addUser method', () => {
+        const randomNumber = Math.floor(Math.random() * 10000);
+
         it('should give error message if no email is passed in', () => {
-            const missingEmail = () => api.addUser({firstName: 'Katie', lastName: 'Scruggs'});
+            const missingEmail = () => api.addUser({firstName: 'New', lastName: 'User'});
             expect(missingEmail).to.Throw(Error, 'email must be supplied when adding user');
         });
         it('should give error message if no firstName is passed in', () => {
-            const missingFirstName = () => api.addUser({email: 'katie.scruggs@trackvia.com', lastName: 'Scruggs'});
+            const missingFirstName = () => api.addUser({email: `${EMAIL_BEFORE_AT}${randomNumber}@${EMAIL_AFTER_AT}`, lastName: 'User'});
             expect(missingFirstName).to.Throw(Error, 'firstName must be supplied when adding user');
         });
         it('should give error message if no lastName is passed in', () => {
-            const missingLastName = () => api.addUser({email: 'katie.scruggs@trackvia.com', firstName: 'Katie'});
+            const missingLastName = () => api.addUser({email: `${EMAIL_BEFORE_AT}${randomNumber}@${EMAIL_AFTER_AT}`, firstName: 'New'});
             expect(missingLastName).to.Throw(Error, 'lastName must be supplied when adding user');
         });
         it('should add a user', () => {
             // get random number so that a new user will be added each time instead of erroring
-            const randomNumber = Math.floor(Math.random() * 10000);
-            api.addUser({email: `katie.scruggs+test${randomNumber}@trackvia.com`, firstName: 'Katie', lastName: 'Scruggs'})
+            api.addUser({email: `${EMAIL_BEFORE_AT}${randomNumber}@${EMAIL_AFTER_AT}`, firstName: 'New', lastName: 'User'})
                 .then(results => {
                     expect(results.data)
                 })
