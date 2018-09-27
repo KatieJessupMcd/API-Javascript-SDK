@@ -32,8 +32,7 @@
         <script src="../build/trackvia-api.js"></script>
         <script src="trackvia-api_test.js" ></script>
         <script>
-            document.getElementById('run-btn').addEventListener('click', () => {
-                document.getElementById('run-btn').disabled = true;
+            document.getElementById('run-btn').addEventListener('click', async () => {
                 mocha.run()
             });
         </script>
