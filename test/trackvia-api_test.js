@@ -1,9 +1,5 @@
 const expect = chai.expect;
 
-const configuration = {
-    
-};
-
 const {
     ENVIRONMENT,
     USERNAME,
@@ -18,7 +14,8 @@ const {
     DOCUMENT_FIELD_NAME,
     VIEW_ID,
     VIEW_NAME,
-} = configuration;
+} = config;
+
 console.log('testing');
 console.log('trackviaapi', TrackviaAPI);
 const api = new TrackviaAPI(API_KEY, ACCESS_TOKEN, ENVIRONMENT);
