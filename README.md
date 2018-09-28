@@ -1,4 +1,4 @@
-# API-Web-SDK
+# API-JavaScript-SDK
 
 JavaScript Web SDK for working with application data in TrackVia. This SDK is meant to run in the browser and creates a global TrackviaAPI variable that can be referenced throughout your project.
 
