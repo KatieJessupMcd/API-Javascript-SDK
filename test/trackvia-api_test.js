@@ -163,23 +163,24 @@ describe('USERS', () => {
         })
     });
     describe('POST /openapi/users in addUser method', () => {
-        const randomNumber = Math.floor(Math.random() * 10000);
+        // get random number so that a new user will be added each time instead of erroring
+        const randomNumber = Math.floor(Math.random() * 100000);
+        const email = `${EMAIL_BEFORE_AT}+${randomNumber}@${EMAIL_AFTER_AT}`;
 
         it('should give error message if no email is passed in', () => {
             const missingEmail = () => api.addUser({firstName: 'New', lastName: 'User'});
             expect(missingEmail).to.Throw(Error, 'email must be supplied when adding user');
         });
         it('should give error message if no firstName is passed in', () => {
-            const missingFirstName = () => api.addUser({email: `${EMAIL_BEFORE_AT}${randomNumber}@${EMAIL_AFTER_AT}`, lastName: 'User'});
+            const missingFirstName = () => api.addUser({email, lastName: 'User'});
             expect(missingFirstName).to.Throw(Error, 'firstName must be supplied when adding user');
         });
         it('should give error message if no lastName is passed in', () => {
-            const missingLastName = () => api.addUser({email: `${EMAIL_BEFORE_AT}${randomNumber}@${EMAIL_AFTER_AT}`, firstName: 'New'});
+            const missingLastName = () => api.addUser({email, firstName: 'New'});
             expect(missingLastName).to.Throw(Error, 'lastName must be supplied when adding user');
         });
         it('should add a user', () => {
-            // get random number so that a new user will be added each time instead of erroring
-            api.addUser({email: `${EMAIL_BEFORE_AT}${randomNumber}@${EMAIL_AFTER_AT}`, firstName: 'New', lastName: 'User'})
+            api.addUser({email, firstName: 'New', lastName: 'User'})
                 .then(results => {
                     expect(results.data)
                 })
